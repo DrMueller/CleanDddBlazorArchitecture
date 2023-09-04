@@ -1,0 +1,23 @@
+# Allgemeines
+
+- Setup Git / CI / CD
+- Setup Web App 
+- Roslyn Analyzer reinziehen
+
+# Architektur
+
+- Setup Layers
+- Setup Data Access
+  - SQLLite möglich mit Web App?
+
+# Blazor
+
+- Reactive testen
+  - Existiert so etwas wie ein Store analog NgRx?
+
+# Allgemeine Features
+
+- Login via Azure AD 
+- Use Case
+  - Individuals anlegen
+ 
