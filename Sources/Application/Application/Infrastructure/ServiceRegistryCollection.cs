@@ -11,10 +11,15 @@ public class ServiceRegistryCollection : ServiceRegistry
 {
     public ServiceRegistryCollection()
     {
+        Scan(scanner =>
+        {
+            scanner.AssemblyContainingType<ServiceRegistryCollection>();
+            scanner.WithDefaultConventions();
+        });
+
         For<IMediationService>().Use<MediationService>()
             .Transient(); // IMPORTANT: The underlaying Mediator service is defined as Transient, we need to use that as well
         this.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<ServiceRegistryCollection>());
-
         this.AddAutoMapper(typeof(ServiceRegistryCollection));
     }
 }

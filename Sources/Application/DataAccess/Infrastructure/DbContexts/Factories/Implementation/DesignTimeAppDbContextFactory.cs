@@ -4,9 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Mmu.CleanBlazor.Common.Settings.Config.Services;
 using Mmu.CleanBlazor.Common.Settings.Provisioning.Models;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implementation;
-using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories;
 
-namespace Mmu.CleanDdd.DataAccess.Areas.DbContexts.Factories.Implementation;
+namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories.Implementation;
 
 public class DesignTimeAppDbContextFactory : IDesignTimeDbContextFactory<AppDbContext>
 {

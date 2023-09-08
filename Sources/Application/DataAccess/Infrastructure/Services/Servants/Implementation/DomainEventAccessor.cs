@@ -20,7 +20,7 @@ public class DomainEventAccessor : IDomainEventAccessor
     {
         var domainEntities = appContext.ChangeTracker
             .Entries<Entity>()
-            .Where(x => x.Entity.DomainEvents.Any()).ToList();
+            .Where(x => x.Entity.DomainEvents?.Any() ?? false).ToList();
 
         return domainEntities
             .SelectMany(x => x.Entity.DomainEvents)

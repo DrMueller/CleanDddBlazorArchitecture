@@ -8,11 +8,11 @@ namespace Mmu.CleanBlazor.Common.LanguageExtensions.Types.Maybes.Implementation
         Justification = "Helper to avoid generic parsing")]
     public class None
     {
+        public static None Value { get; } = new();
+
         private None()
         {
         }
-
-        public static None Value { get; } = new();
     }
 
     [SuppressMessage(

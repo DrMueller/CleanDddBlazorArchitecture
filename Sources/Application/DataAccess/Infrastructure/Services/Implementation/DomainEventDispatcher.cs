@@ -21,7 +21,10 @@ public class DomainEventDispatcher : IDomainEventDispatcher
     {
         var events = _domainEventAccessor.GetDomainEvents(dbContext);
 
-        foreach (var ev in events) await _mediator.Publish(ev);
+        foreach (var ev in events)
+        {
+            await _mediator.Publish(ev);
+        }
 
         _domainEventAccessor.ClearAllDomainEvents(dbContext);
     }

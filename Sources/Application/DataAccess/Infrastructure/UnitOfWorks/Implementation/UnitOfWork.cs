@@ -11,8 +11,8 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.UnitOfWorks.Implementation
 {
     public sealed class UnitOfWork : IUnitOfWork
     {
-        private readonly IRepositoryCache _repoCache;
         private readonly IDomainEventDispatcher _domainEventDispatcher;
+        private readonly IRepositoryCache _repoCache;
         private IAppDbContext _dbContext = null!;
 
         public UnitOfWork(

@@ -5,7 +5,7 @@ using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Models;
 namespace Mmu.CleanBlazor.Application.Infrastructure.Mediation.Services.Implementation
 {
     [UsedImplicitly]
-    internal class MediationService : IMediationService
+    public class MediationService : IMediationService
     {
         private readonly IMediator _mediator;
 

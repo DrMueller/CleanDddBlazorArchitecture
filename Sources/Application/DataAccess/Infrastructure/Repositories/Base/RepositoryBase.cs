@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mmu.CleanBlazor.Common.LanguageExtensions.Types.Maybes;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts;
 using Mmu.CleanBlazor.Domain.Areas.Common.Models;
 using Mmu.CleanBlazor.Domain.Infrastructure.Data.Repositories;
@@ -7,32 +6,25 @@ using Mmu.CleanBlazor.Domain.Infrastructure.Data.Repositories;
 namespace Mmu.CleanBlazor.DataAccess.Infrastructure.Repositories.Base;
 
 public abstract class RepositoryBase<T> : IRepositoryBase
-    where T: AggregateRoot
+    where T : AggregateRoot
 {
-    private IAppDbContext _dbContext;
+    private IAppDbContext _dbContext = null!;
 
-    void IRepositoryBase.Initialize(IAppDbContext dbContext)
+    protected void Delete(T entity)
     {
-        _dbContext = _dbContext;
+        DbSet().Remove(entity);
     }
 
-    private IDbSetProxy<T> DbSet()
-    {
-        return _dbContext.DbSet<T>();
-    }
-
-    private IQueryable<T> Query()
-    {
-        return DbSet().AsNoTracking();
-    }
-
-    public async Task DeleteAsync(long id)
+    public virtual async Task DeleteAsync(long id)
     {
         var loadedEntity = await Query().SingleOrDefaultAsync(f => f.Id == id);
 
-        if (loadedEntity is null) return;
+        if (loadedEntity is null)
+        {
+            return;
+        }
 
-        DbSet().Remove(loadedEntity);
+        Delete(loadedEntity);
     }
 
     public async Task InsertAsync(T entity)
@@ -40,15 +32,23 @@ public abstract class RepositoryBase<T> : IRepositoryBase
         await DbSet().AddAsync(entity);
     }
 
-    public async Task<IReadOnlyCollection<T>> LoadCollectionAsync(IAggregateSpecification<T> spec)
-    {
-        var list = await Query().Where(spec.Filter).ToListAsync();
-
-        return list;
-    }
-
     public async Task<T> LoadSingleAsync(IAggregateSpecification<T> spec)
     {
         return await Query().SingleAsync(spec.Filter);
+    }
+
+    private IDbSetProxy<T> DbSet()
+    {
+        return _dbContext.DbSet<T>();
+    }
+
+    void IRepositoryBase.Initialize(IAppDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    protected IQueryable<T> Query()
+    {
+        return DbSet().AsQueryable();
     }
 }

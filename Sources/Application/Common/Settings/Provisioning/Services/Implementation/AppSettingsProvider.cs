@@ -7,11 +7,11 @@ namespace Mmu.CleanBlazor.Common.Settings.Provisioning.Services.Implementation
     {
         private readonly IOptions<AppSettings> _settings;
 
+        public AppSettings Settings => _settings.Value;
+
         public AppSettingsProvider(IOptions<AppSettings> settings)
         {
             _settings = settings;
         }
-
-        public AppSettings Settings => _settings.Value;
     }
 }

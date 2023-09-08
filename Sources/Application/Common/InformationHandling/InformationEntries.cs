@@ -4,23 +4,23 @@
     {
         private readonly IReadOnlyCollection<InformationEntry> _values;
 
-        private InformationEntries(IReadOnlyCollection<InformationEntry> values)
-        {
-            _values = values;
-        }
-
         public static InformationEntries Empty { get; } = new(new List<InformationEntry>());
 
         public IReadOnlyCollection<string> ErrorMessages => Select(InformationType.Error);
         public bool HasErrors => _values.Any(f => f.Type == InformationType.Error);
 
         public bool HasErrorsOrWarnings => _values.Any(f => f.Type == InformationType.Error
-                                                           || f.Type == InformationType.Warning);
+                                                            || f.Type == InformationType.Warning);
 
         public IReadOnlyCollection<string> InfoMessages => Select(InformationType.Information);
 
         public bool IsEmpty => !_values.Any();
         public IReadOnlyCollection<string> WarningMessages => Select(InformationType.Warning);
+
+        private InformationEntries(IReadOnlyCollection<InformationEntry> values)
+        {
+            _values = values;
+        }
 
         public static InformationEntries CreateFromError(string errorMessage)
         {

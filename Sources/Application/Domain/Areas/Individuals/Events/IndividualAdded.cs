@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Mmu.CleanBlazor.Domain.Areas.Common.DomainEvents;
+﻿using Mmu.CleanBlazor.Domain.Areas.Common.DomainEvents;
+using Mmu.CleanBlazor.Domain.Areas.Individuals.Models;
 
 namespace Mmu.CleanBlazor.Domain.Areas.Individuals.Events
 {
     public class IndividualAdded : DomainEventBase
     {
-        public long IndividualId { get; }
+        public Individual Individual { get; }
 
-        public IndividualAdded(long individualId)
+        // Passing the whole reference makes sure the ID is filled after the uow Commit
+        public IndividualAdded(Individual individual)
         {
-            IndividualId = individualId;
+            Individual = individual;
         }
     }
 }

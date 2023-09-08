@@ -4,7 +4,7 @@ using Mmu.CleanBlazor.Domain.Infrastructure.Data.UnitOfWorks;
 
 namespace Mmu.CleanBlazor.DataAccess.Infrastructure.UnitOfWorks.Implementation
 {
-    internal class UnitOfWorkFactory : IUnitOfWorkFactory
+    public class UnitOfWorkFactory : IUnitOfWorkFactory
     {
         private readonly IContainer _container;
         private readonly IAppDbContextFactory _dbContextFactory;

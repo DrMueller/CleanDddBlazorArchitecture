@@ -12,8 +12,7 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories.Impleme
             mb.ApplyConfigurationsFromAssembly(typeof(AppDbContextFactory).Assembly);
 
             return new DbContextOptionsBuilder()
-                //.UseSqlServer(connectionString)
-                .UseInMemoryDatabase("Tra")
+                .UseSqlServer(connectionString)
                 .UseModel(mb.FinalizeModel())
                 .Options;
         }

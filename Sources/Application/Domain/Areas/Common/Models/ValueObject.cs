@@ -2,7 +2,7 @@
 {
     public abstract record ValueObject
 
-    // ReSharper disable once RedundantRecordBody
+        // ReSharper disable once RedundantRecordBody
     {
     }
 }

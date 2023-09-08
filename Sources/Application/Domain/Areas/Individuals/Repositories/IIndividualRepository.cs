@@ -5,9 +5,8 @@ namespace Mmu.CleanBlazor.Domain.Areas.Individuals.Repositories;
 
 public interface IIndividualRepository : IRepository
 {
+    Task DeleteAsync(long id);
     Task InsertAsync(Individual ind);
 
     Task<Individual> LoadSingleAsync(IAggregateSpecification<Individual> spec);
-
-    Task DeleteAsync(long id);
 }

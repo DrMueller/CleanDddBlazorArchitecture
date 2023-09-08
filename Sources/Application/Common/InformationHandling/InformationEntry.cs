@@ -4,6 +4,9 @@ namespace Mmu.CleanBlazor.Common.InformationHandling
 {
     public class InformationEntry
     {
+        public string Message { get; }
+        public InformationType Type { get; }
+
         public InformationEntry(InformationType type, string message)
         {
             Guard.StringNotNullOrEmpty(() => message);
@@ -11,8 +14,5 @@ namespace Mmu.CleanBlazor.Common.InformationHandling
             Type = type;
             Message = message;
         }
-
-        public string Message { get; }
-        public InformationType Type { get; }
     }
 }

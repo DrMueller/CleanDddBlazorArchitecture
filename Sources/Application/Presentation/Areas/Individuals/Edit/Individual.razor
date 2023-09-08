@@ -1,0 +1,34 @@
+﻿@page "/individuals/{id:long}"
+
+@if (IndividualVm == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <EditForm Model="@IndividualVm" OnValidSubmit="@HandleValidSubmitAsync">
+        <DataAnnotationsValidator/>
+        <ValidationSummary/>
+        <h1>@HeaderDescription</h1>
+
+        <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <InputText class="form-control" id="firstName" @bind-Value="@IndividualVm.FirstName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <InputText class="form-control" id="lastName" @bind-Value="@IndividualVm.LastName"/>
+        </div>
+
+        <div class="form-group">
+            <label for="birthDate">Birthdate:</label>
+            <InputDate class="form-control" id="birthDate" @bind-Value="@IndividualVm.BirthDate"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" @onclick="GotoOverview" class="btn btn-secondary">Cancel</button>
+    </EditForm>
+}

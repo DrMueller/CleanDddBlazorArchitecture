@@ -1,11 +1,6 @@
-﻿using Mmu.CleanBlazor.Domain.Infrastructure.Data.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 using Mmu.CleanBlazor.Domain.Areas.Common.Models;
+using Mmu.CleanBlazor.Domain.Infrastructure.Data.Repositories;
 
 namespace Mmu.CleanBlazor.Domain.Areas.Common.Specifications
 {
@@ -14,11 +9,11 @@ namespace Mmu.CleanBlazor.Domain.Areas.Common.Specifications
     {
         private readonly long _id;
 
+        public Expression<Func<T, bool>> Filter => t => t.Id == _id;
+
         public LoadAggregateByIdSpec(long id)
         {
             _id = id;
         }
-
-        public Expression<Func<T, bool>> Filter => t => t.Id == _id;
     }
 }
