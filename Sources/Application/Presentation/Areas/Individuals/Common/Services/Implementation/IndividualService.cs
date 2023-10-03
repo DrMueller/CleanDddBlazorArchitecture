@@ -21,6 +21,8 @@ public class IndividualService : IIndividualService
 
     public async Task<IndividualVm> LoadAsync(long id)
     {
+        throw new Exception("Tra");
+
         if (id == 0)
         {
             return new IndividualVm();

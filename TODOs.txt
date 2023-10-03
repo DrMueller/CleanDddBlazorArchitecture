@@ -1,6 +1,0 @@
-# Allgemeines
-
-# Architektur
-
-- Domain Events
-- Validation

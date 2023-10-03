@@ -10,11 +10,6 @@ public abstract class RepositoryBase<T> : IRepositoryBase
 {
     private IAppDbContext _dbContext = null!;
 
-    protected void Delete(T entity)
-    {
-        DbSet().Remove(entity);
-    }
-
     public virtual async Task DeleteAsync(long id)
     {
         var loadedEntity = await Query().SingleOrDefaultAsync(f => f.Id == id);
@@ -37,6 +32,16 @@ public abstract class RepositoryBase<T> : IRepositoryBase
         return await Query().SingleAsync(spec.Filter);
     }
 
+    protected void Delete(T entity)
+    {
+        DbSet().Remove(entity);
+    }
+
+    protected IQueryable<T> Query()
+    {
+        return DbSet().AsQueryable();
+    }
+
     private IDbSetProxy<T> DbSet()
     {
         return _dbContext.DbSet<T>();
@@ -45,10 +50,5 @@ public abstract class RepositoryBase<T> : IRepositoryBase
     void IRepositoryBase.Initialize(IAppDbContext dbContext)
     {
         _dbContext = dbContext;
-    }
-
-    protected IQueryable<T> Query()
-    {
-        return DbSet().AsQueryable();
     }
 }
