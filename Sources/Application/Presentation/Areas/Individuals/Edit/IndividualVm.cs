@@ -17,4 +17,7 @@ public class IndividualVm
 
     [Required]
     public string LastName { get; set; }
+
+    [Required]
+    public double Length { get; set; }
 }

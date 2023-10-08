@@ -13,6 +13,7 @@ public class IndividualConfig : EntityConfigBase<Individual>
         builder.Property(f => f.FirstName).HasMaxLength(100).IsRequired();
         builder.Property(f => f.Gender).IsRequired();
         builder.Property(f => f.LastName).HasMaxLength(100).IsRequired();
+        builder.Property(f => f.Length).IsRequired();
         builder.ToTable(nameof(Individual), Schemas.Individuals);
     }
 }

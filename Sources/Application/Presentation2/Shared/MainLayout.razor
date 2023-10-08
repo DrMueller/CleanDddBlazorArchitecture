@@ -1,0 +1,29 @@
+﻿@inherits LayoutComponentBase
+
+
+<PageTitle>Clean Blazor PoC</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu/>
+    </div>
+
+    <main>
+        <div class="top-row px-4 auth">
+            <LoginDisplay/>
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            <AppErrorBoundary @ref="ErrorBoundary">
+                <ChildContent>
+                    @Body
+                </ChildContent>
+                <ErrorContent Context="ex">
+                    <p class="ErrorUI">@ex.Message</p>
+                    <p class="ErrorUI">@ex.StackTrace</p>
+                </ErrorContent>
+            </AppErrorBoundary>
+        </article>
+    </main>
+</div>

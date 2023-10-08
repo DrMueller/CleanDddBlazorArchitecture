@@ -12,19 +12,21 @@ public class Individual : AggregateRoot
     public Gender Gender { get; }
 
     public string LastName { get; set; }
+    public double Length { get; set; }
 
     // User for EF Core
-    private Individual(string firstName, string lastName, Gender gender, DateTime birthDate)
+    private Individual(string firstName, string lastName, Gender gender, DateTime birthDate, double length)
     {
         FirstName = firstName;
         LastName = lastName;
         Gender = gender;
         BirthDate = birthDate;
+        Length = length;
     }
 
-    public static Individual CreateNew(string firstName, string lastName, Gender gender, DateTime birthDate)
+    public static Individual CreateNew(string firstName, string lastName, Gender gender, DateTime birthDate, double length)
     {
-        var ind = new Individual(firstName, lastName, gender, birthDate);
+        var ind = new Individual(firstName, lastName, gender, birthDate, length);
         ind.AddDomainEvent(new IndividualAdded(ind));
 
         return ind;

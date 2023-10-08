@@ -17,7 +17,8 @@ namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview
                     FirstName = ind.FirstName,
                     GenderDescription = ind.Gender == Gender.Male ? IndividualOverviewEntry.GenderMale : IndividualOverviewEntry.GenderFemale,
                     LastName = ind.LastName,
-                    IndividualId = ind.Id
+                    IndividualId = ind.Id,
+                    Length = ind.Length
                 };
             }
         }

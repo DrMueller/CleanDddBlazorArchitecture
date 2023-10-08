@@ -29,9 +29,4 @@
 		</Content>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Infrastructure\State\Models\" />
-	  <Folder Include="Infrastructure\State\Services\" />
-	</ItemGroup>
-
 </Project>

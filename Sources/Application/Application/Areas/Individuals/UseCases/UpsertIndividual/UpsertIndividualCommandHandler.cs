@@ -30,6 +30,7 @@ public class UpsertIndividualCommandHandler : IRequestHandler<UpsertIndividualCo
             individual.FirstName = request.Individual.FirstName;
             individual.LastName = request.Individual.LastName;
             individual.BirthDate = request.Individual.BirthDate;
+            individual.Length = request.Individual.Length;
         }
         else
         {
@@ -37,7 +38,8 @@ public class UpsertIndividualCommandHandler : IRequestHandler<UpsertIndividualCo
                 request.Individual.FirstName,
                 request.Individual.LastName,
                 Gender.Male,
-                request.Individual.BirthDate);
+                request.Individual.BirthDate,
+                request.Individual.Length);
 
             await indRepo.InsertAsync(individual);
         }

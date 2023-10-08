@@ -15,7 +15,6 @@ public class LoadIndividualQueryHandler : IRequestHandler<LoadIndividualQuery, I
 
     public async Task<IndividualDetailsEntry> Handle(LoadIndividualQuery request, CancellationToken cancellationToken)
     {
-        throw new Exception("Tra");
         var inds = await _queryService.QueryAsync(new LoadIndividualDetailsSpec(request.IndividualId));
 
         return inds.Single();

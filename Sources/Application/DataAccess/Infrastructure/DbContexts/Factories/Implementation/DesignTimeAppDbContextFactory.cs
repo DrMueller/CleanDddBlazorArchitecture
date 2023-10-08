@@ -1,4 +1,5 @@
-﻿using Lamar;
+﻿using System.Diagnostics;
+using Lamar;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.DependencyInjection;
 using Mmu.CleanBlazor.Common.Settings.Config.Services;
@@ -11,6 +12,7 @@ public class DesignTimeAppDbContextFactory : IDesignTimeDbContextFactory<AppDbCo
 {
     public AppDbContext CreateDbContext(string[] args)
     {
+        Debugger.Launch();
         var container = CreateContainer();
 
         var appDbContextFactory = container.GetInstance<IAppDbContextFactory>();

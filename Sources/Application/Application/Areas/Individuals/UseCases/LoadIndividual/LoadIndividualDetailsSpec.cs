@@ -14,7 +14,8 @@ public class LoadIndividualDetailsSpec : IQuerySpecification<Individual, Individ
         BirthDate = ind.BirthDate,
         FirstName = ind.FirstName,
         LastName = ind.LastName,
-        IndividualId = ind.Id
+        IndividualId = ind.Id,
+        Length = ind.Length
     };
 
     public LoadIndividualDetailsSpec(long individualId)

@@ -17,5 +17,7 @@ namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview.Re
         public long IndividualId { get; set; }
 
         public string LastName { get; set; }
+
+        public double Length { get; set; }
     }
 }
