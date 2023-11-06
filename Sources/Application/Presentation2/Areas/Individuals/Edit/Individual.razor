@@ -22,10 +22,12 @@
             <label for="birthDate">Birthdate:</label>
             <InputDate class="form-control" id="birthDate" @bind-Value="@IndividualVm.BirthDate"/>
         </div>
-
+    
+        <p>@Gender</p>
+        
         <div class="form-group">
             <label>Geschlecht:</label>
-            <EnumDropdown ButtonText="Button auswählen" @bind-Value="@IndividualVm.Gender">
+            <EnumDropdown @bind-Value="@Gender">
             </EnumDropdown>
         </div>
 

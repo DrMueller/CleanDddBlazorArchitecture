@@ -1,5 +1,11 @@
 ﻿@page "/individuals"
+@using Mmu.CleanBlazor.Presentation2.Shared.Components.Dialogs.ConfirmDialogs;
 
+<ConfirmDialog @ref="DialogRef" Title="Person löschen">
+    <p>
+        Sind Sie sicher, dass sie diese Person löschen wollen?
+    </p>
+</ConfirmDialog>
 
 <div class="animate__animated animate__fadeInRight">
     <h3>Individuals</h3>

@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Components;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.DeleteIndividual;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview;
 using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Services;
+using Mmu.CleanBlazor.Presentation2.Shared.Components.Dialogs.ConfirmDialogs;
 
 namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview
 {
     public partial class IndividualsOverview
     {
-        public string InfoMessage { get; set; }
+        public ConfirmDialog DialogRef { get; set; }
+        private string InfoMessage { get; set; }
 
         [Inject]
         public IMapper Mapper { get; set; }
@@ -29,6 +31,13 @@ namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview
 
         private async Task DeleteIndividual(long individualId)
         {
+            var checkResult = await DialogRef.ShowAsync();
+
+            if (!checkResult.Confirmed)
+            {
+                return;
+            }
+
             await Mediator.SendAsync(new DeleteIndividualCommand(individualId));
             var item = OverviewEntries.Single(f => f.IndividualId == individualId);
             OverviewEntries.Remove(item);

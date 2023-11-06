@@ -1,7 +1,9 @@
 ﻿@typeparam TItem
 
-<InputDropdown
-    OnSelectionChanged="OnSelectionChangedAsync"
-    ButtonText="@ButtonText"
-    Items="Items">
-</InputDropdown>
+<select value="@Value" @onchange="OnValueChangedAsync">
+    <option value=""></option>
+    @foreach (var item in EnumValues)
+    {
+        <option value="@item">@item</option>
+    }
+</select>

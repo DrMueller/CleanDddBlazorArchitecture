@@ -1,15 +1,19 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Mmu.CleanBlazor.Presentation2.Shared.Components.FormElements.Dropdowns.Generic;
 
 namespace Mmu.CleanBlazor.Presentation2.Shared.Components.FormElements.Dropdowns.EnumDropdowns
 {
     public partial class EnumDropdown<TItem> : ComponentBase
         where TItem : struct, Enum
     {
-        [Parameter]
-        public string ButtonText { get; set; }
+        public Array EnumValues
+        {
+            get
+            {
+                var result = Enum.GetValues(typeof(TItem));
 
-        public List<DropdownItem> Items { get; set; }
+                return result;
+            }
+        }
 
         [Parameter]
         public TItem Value { get; set; }
@@ -17,15 +21,9 @@ namespace Mmu.CleanBlazor.Presentation2.Shared.Components.FormElements.Dropdowns
         [Parameter]
         public EventCallback<TItem> ValueChanged { get; set; }
 
-        protected override void OnParametersSet()
+        private async Task OnValueChangedAsync(ChangeEventArgs args)
         {
-            var val = Enum.GetValues(typeof(TItem));
-            Items = val.Cast<TItem>().Select(f => new DropdownItem { Text = f.ToString(), Value = ((int)(object)f).ToString() }).ToList();
-        }
-
-        private async Task OnSelectionChangedAsync(DropdownItem item)
-        {
-            Value = Enum.Parse<TItem>(item.Value);
+            Value = Enum.Parse<TItem>(args.Value!.ToString()!);
             await ValueChanged.InvokeAsync(Value);
         }
     }

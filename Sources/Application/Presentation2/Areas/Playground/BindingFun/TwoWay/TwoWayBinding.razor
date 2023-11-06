@@ -1,0 +1,15 @@
+﻿<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Two-way binding</h5>
+        <p>
+            <InputNumber @bind-Value="NumberValue"/>
+            @*<input type="text" @bind-Value="StringValue" @bind-Value:event="oninput" />*@
+            <InputText @bind-Value="StringValue" />
+        </p>
+
+        <p>
+            <p>Number: @NumberValue</p>
+            <p>String: @StringValue</p>
+        </p>
+    </div>
+</div>

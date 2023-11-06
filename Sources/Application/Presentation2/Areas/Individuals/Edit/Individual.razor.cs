@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Mmu.CleanBlazor.Domain.Areas.Individuals.Models;
+using Mmu.CleanBlazor.Presentation2.Areas.Individuals.Common.Models;
 using Mmu.CleanBlazor.Presentation2.Areas.Individuals.Common.Services;
 
 namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Edit;
@@ -27,6 +29,20 @@ public partial class Individual
     public IndividualVm? IndividualVm { get; private set; }
 
     public bool IsLoading => IndividualVm == null;
+
+    private GenderVm _gender;
+    
+    public GenderVm Gender
+    {
+        get
+        {
+            return _gender;
+        }
+        set
+        {
+            _gender = value;
+        }
+    }
 
     [Inject]
     private NavigationManager NavigationManager { get; set; }

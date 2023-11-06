@@ -57,6 +57,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Test\Components\TestPage.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\Mmu.CleanBlazor.Application.csproj" />
     <ProjectReference Include="..\DependencyHack\Mmu.CleanBlazor.DependencyHack.csproj" />
   </ItemGroup>

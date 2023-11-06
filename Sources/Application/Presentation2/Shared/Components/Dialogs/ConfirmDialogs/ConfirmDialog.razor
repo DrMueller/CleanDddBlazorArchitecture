@@ -1,0 +1,16 @@
+﻿<div id="confirm-dialog" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@Title</h5>
+            </div>
+            <div class="modal-body">
+                @ChildContent
+            </div>
+            <div class="modal-footer">
+                <button @onclick="() => CloseDialog(false)" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                <button @onclick="() => CloseDialog(true)" type="button" class="btn btn-primary">Ja</button>
+            </div>
+        </div>
+    </div>
+</div>
