@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.WebApp.AppFactories;
 
-public abstract class TestAppFactoryBase : WebApplicationFactory<Program>
+public class QualityTestAppFactory : WebApplicationFactory<Program>
 {
     private IHost? _host;
 

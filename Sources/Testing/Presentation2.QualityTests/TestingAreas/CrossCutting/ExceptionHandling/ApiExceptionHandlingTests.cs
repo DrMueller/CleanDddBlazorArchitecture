@@ -1,5 +1,5 @@
 ﻿using FluentAssertions;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures.Quality;
+using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures;
 using Xunit;
 
 namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingAreas.CrossCutting.ExceptionHandling

@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Startups;
+using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.WebApp.AppFactories;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures.Quality
+namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures
 {
     [UsedImplicitly]
     public sealed class QualityTestFixture : IDisposable, IAsyncDisposable

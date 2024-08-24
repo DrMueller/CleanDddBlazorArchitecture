@@ -1,6 +1,6 @@
 ﻿using Microsoft.Playwright;
 using Mmu.CleanBlazor.Presentation2.Areas.Test.Components;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures.Quality;
+using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures;
 using Xunit;
 
 namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingAreas.CrossCutting.ExceptionHandling
