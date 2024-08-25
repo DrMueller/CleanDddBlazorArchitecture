@@ -3,7 +3,7 @@ using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Models;
 
 namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview
 {
-    public class LoadAllIndividualsQuery : IQuery<IReadOnlyCollection<IndividualOverviewEntry>>
+    public record LoadAllIndividualsQuery : IQuery<IReadOnlyCollection<IndividualOverviewEntry>>
     {
     }
 }

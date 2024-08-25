@@ -3,7 +3,7 @@ using Mmu.CleanBlazor.Common.LanguageExtensions.Invariance;
 
 namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.DeleteIndividual
 {
-    public class DeleteIndividualCommand : ICommand
+    public record DeleteIndividualCommand : ICommand
     {
         public long IndividualId { get; }
 
