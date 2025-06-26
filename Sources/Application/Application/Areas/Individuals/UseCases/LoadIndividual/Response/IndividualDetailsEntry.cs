@@ -1,4 +1,6 @@
-﻿namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadIndividual.Response
+﻿using Mmu.CleanBlazor.Domain.Areas.Individuals.Models;
+
+namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadIndividual.Response
 {
     public class IndividualDetailsEntry
     {
@@ -11,5 +13,17 @@
         public string LastName { get; init; }
 
         public double Length { get; init; }
+
+        public static IndividualDetailsEntry Map(Individual individual)
+        {
+            return new IndividualDetailsEntry
+            {
+                BirthDate = individual.BirthDate,
+                FirstName = individual.FirstName,
+                IndividualId = individual.Id,
+                LastName = individual.LastName,
+                Length = individual.Length
+            };
+        }
     }
 }

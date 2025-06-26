@@ -1,9 +1,9 @@
 ﻿using Microsoft.Playwright;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.DataAccess;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.WebApp.AppFactories;
+using Mmu.CleanBlazor.QualityTests.TestingInfrastructure.DataAccess;
+using Mmu.CleanBlazor.QualityTests.TestingInfrastructure.WebApp.AppFactories;
 using Xunit;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.Fixtures
 {
     [Collection(QualityTestsCollectionFixture.CollectionName)]
     public abstract class QualityTestBase : IAsyncLifetime

@@ -12,28 +12,27 @@ public class DesignTimeAppDbContextFactory : IDesignTimeDbContextFactory<AppDbCo
 {
     public AppDbContext CreateDbContext(string[] args)
     {
-        Debugger.Launch();
         var container = CreateContainer();
 
         var appDbContextFactory = container.GetInstance<IAppDbContextFactory>();
+        Debugger.Launch();
 
         return (AppDbContext)appDbContextFactory.Create();
     }
 
     private static IContainer CreateContainer()
     {
-        return new Container(
-            cfg =>
-            {
-                cfg.Scan(
-                    scanner =>
-                    {
-                        scanner.AssembliesFromApplicationBaseDirectory();
-                        scanner.LookForRegistries();
-                    });
 
-                var config = ConfigurationFactory.Create();
-                cfg.Configure<AppSettings>(config.GetSection(AppSettings.SectionKey));
+        return new Container(cfg =>
+        {
+            cfg.Scan(scanner =>
+            {
+                scanner.AssembliesFromApplicationBaseDirectory();
+                scanner.LookForRegistries();
             });
+
+            var config = ConfigurationFactory.Create();
+            cfg.Configure<AppSettings>(config.GetSection(AppSettings.SectionKey));
+        });
     }
 }

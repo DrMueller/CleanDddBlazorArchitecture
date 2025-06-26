@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Mmu.CleanBlazor.Common.Logging;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Mocks
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.Mocks
 {
     [UsedImplicitly]
     public class LoggingServiceMock : ILoggingService

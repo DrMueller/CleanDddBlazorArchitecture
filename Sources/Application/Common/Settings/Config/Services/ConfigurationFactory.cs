@@ -1,5 +1,7 @@
+using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Mmu.CleanBlazor.Common.Settings.Provisioning.Models;
+using System.Reflection;
 
 namespace Mmu.CleanBlazor.Common.Settings.Config.Services
 {
@@ -7,16 +9,17 @@ namespace Mmu.CleanBlazor.Common.Settings.Config.Services
     {
         public static IConfiguration Create()
         {
-            var configBuilder = new ConfigurationBuilder();
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            var path = Path.GetDirectoryName(typeof(ConfigurationFactory).Assembly.Location);
 
-            configBuilder
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json", true, false);
+            var configBuilder = new ConfigurationBuilder()
+                .SetBasePath(path!)
+                .AddJsonFile("appsettings.json", false, true);
 
-            if (environment == "Development")
+            var isDevelopment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development";
+
+            if (isDevelopment)
             {
-                configBuilder.AddUserSecrets<AppSettings>();
+                configBuilder.AddUserSecrets(typeof(ConfigurationFactory).Assembly);
             }
 
             return configBuilder.Build();

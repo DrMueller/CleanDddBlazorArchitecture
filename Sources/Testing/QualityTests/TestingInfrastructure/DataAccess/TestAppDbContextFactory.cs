@@ -4,7 +4,7 @@ using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implementation;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.DataAccess
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.DataAccess
 {
     [UsedImplicitly]
     public class TestAppDbContextFactory : IAppDbContextFactory

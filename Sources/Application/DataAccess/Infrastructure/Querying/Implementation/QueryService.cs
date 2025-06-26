@@ -2,43 +2,52 @@
 using Microsoft.EntityFrameworkCore;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories;
+using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories.Implementation;
 using Mmu.CleanBlazor.Domain.Areas.Common.Models;
 using Mmu.CleanBlazor.Domain.Infrastructure.Data.Querying;
+using System.Diagnostics;
 
 namespace Mmu.CleanBlazor.DataAccess.Infrastructure.Querying.Implementation
 {
     [UsedImplicitly]
     public class QueryService : IQueryService
     {
-        private readonly IAppDbContext _appDbContext;
+        private readonly IAppDbContextFactory _appDbContextFactory;
 
         public QueryService(IAppDbContextFactory appDbContextFactory)
         {
-            _appDbContext = appDbContextFactory.Create();
+            _appDbContextFactory = appDbContextFactory;
+        }
+        public async Task<bool> AnyAsync<TResult>(IQuerySpecification<TResult> spec)
+        {
+            return await PrepareQuery(spec).AnyAsync();
         }
 
-        public async Task<IReadOnlyCollection<TResult>> QueryAsync<T, TResult>(IQuerySpecification<T, TResult> spec)
-            where T : Entity
+        public async Task<IReadOnlyCollection<TResult>> QueryAsync<TResult>(IQuerySpecification<TResult> spec)
         {
-            var dbSet = _appDbContext.DbSet<T>().AsNoTracking();
+            var qry = PrepareQuery(spec);
+            var sql = qry.ToQueryString();
 
-            var query = spec.Apply(dbSet);
-
-            var selectSet = query.Select(spec.Selector);
-            var result = await selectSet.ToListAsync();
-
-            return result;
+            Debug.WriteLine(sql);
+            return await qry.ToListAsync();
         }
 
-        public async Task<IReadOnlyCollection<T>> QueryAsync<T>(IQuerySpecification<T> spec)
-            where T : Entity
+        public async Task<TResult> QuerySingleAsync<TResult>(IQuerySpecification<TResult> spec)
         {
-            var dbSet = _appDbContext.DbSet<T>().AsNoTracking();
-            var query = spec.Apply(dbSet);
+            return await PrepareQuery(spec).SingleAsync();
+        }
 
-            var result = await query.ToListAsync();
+        public async Task<TResult?> QuerySingleOrDefaultAsync<TResult>(IQuerySpecification<TResult> spec)
+        {
+            return await PrepareQuery(spec).SingleOrDefaultAsync();
+        }
 
-            return result;
+        private IQueryable<TResult> PrepareQuery<TResult>(IQuerySpecification<TResult> spec)
+        {
+            var appDbContext = _appDbContextFactory.Create();
+            var query = spec.Apply(appDbContext);
+
+            return query;
         }
     }
 }

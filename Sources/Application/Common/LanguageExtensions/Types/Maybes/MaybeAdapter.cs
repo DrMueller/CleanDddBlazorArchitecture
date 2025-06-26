@@ -60,5 +60,17 @@ namespace Mmu.CleanBlazor.Common.LanguageExtensions.Types.Maybes
 
             return maybe.ReduceThrow();
         }
+
+        public static void WhenSome<T>(
+            this Maybe<T> maybe,
+            Action<T> whenSome)
+        {
+            if (maybe is None<T>)
+            {
+                return;
+            }
+
+            whenSome((Some<T>)maybe);
+        }
     }
 }

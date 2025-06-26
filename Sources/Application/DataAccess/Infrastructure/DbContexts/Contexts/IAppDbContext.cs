@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Mmu.CleanBlazor.Domain.Infrastructure.Data.Querying;
 
 namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts
 {
-    public interface IAppDbContext : IDisposable
+    public interface IAppDbContext : IDisposable, IQueryBase
     {
         ChangeTracker ChangeTracker { get; }
 

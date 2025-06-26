@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Mmu.CleanBlazor.Presentation2;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.WebApp.AppFactories;
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.WebApp.AppFactories;
 
 public class QualityTestAppFactory : WebApplicationFactory<Program>
 {

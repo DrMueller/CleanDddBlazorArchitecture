@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Fixtures
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.Fixtures
 {
     [CollectionDefinition(CollectionName)]
     public class QualityTestsCollectionFixture : ICollectionFixture<QualityTestFixture>

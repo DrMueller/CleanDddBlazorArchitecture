@@ -2,10 +2,10 @@
 using Lamar;
 using Mmu.CleanBlazor.Common.Logging;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.DataAccess;
-using Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.Mocks;
+using Mmu.CleanBlazor.QualityTests.TestingInfrastructure.DataAccess;
+using Mmu.CleanBlazor.QualityTests.TestingInfrastructure.Mocks;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure
 {
     [UsedImplicitly]
     public class ServiceRegistryCollection : ServiceRegistry

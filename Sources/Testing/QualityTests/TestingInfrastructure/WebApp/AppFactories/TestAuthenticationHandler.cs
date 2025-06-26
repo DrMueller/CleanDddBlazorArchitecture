@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Mmu.CleanBlazor.Presentation2.QualityTests.TestingInfrastructure.WebApp.AppFactories
+namespace Mmu.CleanBlazor.QualityTests.TestingInfrastructure.WebApp.AppFactories
 {
     [UsedImplicitly]
     public class TestAuthenticationHandler : AuthenticationHandler<TestAuthenticationOptions>

@@ -1,5 +1,8 @@
 ﻿using MediatR;
+using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadIndividual;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview.Response;
+using Mmu.CleanBlazor.Common.Extensions;
+using Mmu.CleanBlazor.Domain.Areas.Individuals.Specifications;
 using Mmu.CleanBlazor.Domain.Infrastructure.Data.Querying;
 
 namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview
@@ -15,9 +18,9 @@ namespace Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview
 
         public async Task<IReadOnlyCollection<IndividualOverviewEntry>> Handle(LoadAllIndividualsQuery request, CancellationToken cancellationToken)
         {
-            var dtos = await _queryService.QueryAsync(new LoadAllIndividualsSpec());
-
-            return dtos;
+            return await _queryService
+                .QueryAsync(new IndividualSpec())
+                .SelectListAsync(IndividualOverviewEntry.Map);
         }
     }
 }

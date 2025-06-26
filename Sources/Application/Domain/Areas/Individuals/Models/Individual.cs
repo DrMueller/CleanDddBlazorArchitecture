@@ -6,11 +6,8 @@ namespace Mmu.CleanBlazor.Domain.Areas.Individuals.Models;
 public class Individual : AggregateRoot
 {
     public DateTime BirthDate { get; set; }
-
     public string FirstName { get; set; }
-
     public Gender Gender { get; }
-
     public string LastName { get; set; }
     public double Length { get; set; }
 

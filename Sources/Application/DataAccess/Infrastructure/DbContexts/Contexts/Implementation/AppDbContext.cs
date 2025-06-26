@@ -20,5 +20,11 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implemen
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
+
+        public IQueryable<T> Query<T>()
+            where T : class
+        {
+            return DbSet<T>().AsNoTracking().AsQueryable();
+        }
     }
 }

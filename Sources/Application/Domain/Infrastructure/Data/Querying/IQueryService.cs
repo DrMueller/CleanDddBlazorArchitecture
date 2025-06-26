@@ -4,10 +4,9 @@ namespace Mmu.CleanBlazor.Domain.Infrastructure.Data.Querying
 {
     public interface IQueryService
     {
-        Task<IReadOnlyCollection<TResult>> QueryAsync<T, TResult>(IQuerySpecification<T, TResult> spec)
-            where T : Entity;
-
-        Task<IReadOnlyCollection<T>> QueryAsync<T>(IQuerySpecification<T> spec)
-            where T : Entity;
+        Task<IReadOnlyCollection<TResult>> QueryAsync<TResult>(IQuerySpecification<TResult> spec);
+        Task<bool> AnyAsync<TResult>(IQuerySpecification<TResult> spec);
+        Task<TResult> QuerySingleAsync<TResult>(IQuerySpecification<TResult> spec);
+        Task<TResult?> QuerySingleOrDefaultAsync<TResult>(IQuerySpecification<TResult> spec);
     }
 }
