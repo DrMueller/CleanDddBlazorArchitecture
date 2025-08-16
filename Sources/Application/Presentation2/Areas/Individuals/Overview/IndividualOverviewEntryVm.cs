@@ -1,11 +1,26 @@
-﻿namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview;
+﻿using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview.Response;
+
+namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview;
 
 public class IndividualOverviewEntryVm
 {
-    required public DateTime BirthDate { get; init; }
-    required public string FirstName { get; init; }
-    required public string GenderDescription { get; init; }
-    required public long IndividualId { get; init; }
-    required public string LastName { get; init; }
-    required public double Length { get; init; }
+    public required DateTime BirthDate { get; init; }
+    public required string FirstName { get; init; }
+    public required string GenderDescription { get; init; }
+    public required long IndividualId { get; init; }
+    public required string LastName { get; init; }
+    public required double Length { get; init; }
+
+    public static IndividualOverviewEntryVm MapFromEntry(IndividualOverviewEntry entry)
+    {
+        return new IndividualOverviewEntryVm
+        {
+            BirthDate = entry.BirthDate,
+            FirstName = entry.FirstName,
+            GenderDescription = entry.GenderDescription,
+            IndividualId = entry.IndividualId,
+            LastName = entry.LastName,
+            Length = entry.Length
+        };
+    }
 }

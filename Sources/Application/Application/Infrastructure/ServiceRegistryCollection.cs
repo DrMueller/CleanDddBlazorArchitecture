@@ -24,8 +24,7 @@ public class ServiceRegistryCollection : ServiceRegistry
         this.AddMediatR(cfg =>
         {
             cfg.RegisterServicesFromAssemblyContaining<ServiceRegistryCollection>();
-            cfg.AddOpenRequestPreProcessor(typeof(LogOperationPreRequestHandler<>));
+            //cfg.AddOpenRequestPreProcessor(typeof(LogOperationPreRequestHandler<>));
         });
-        this.AddAutoMapper(typeof(ServiceRegistryCollection));
     }
 }

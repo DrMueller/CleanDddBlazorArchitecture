@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadIndividual;
+﻿using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadIndividual;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.UpsertIndividual;
 using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Services;
 using Mmu.CleanBlazor.Presentation2.Areas.Individuals.Edit;
@@ -8,15 +7,12 @@ namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Common.Services.Implem
 
 public class IndividualService : IIndividualService
 {
-    private readonly IMapper _mapper;
     private readonly IMediationService _mediator;
 
     public IndividualService(
-        IMediationService mediator,
-        IMapper mapper)
+        IMediationService mediator)
     {
         _mediator = mediator;
-        _mapper = mapper;
     }
 
     public async Task<IndividualVm> LoadAsync(long id)
@@ -27,14 +23,28 @@ public class IndividualService : IIndividualService
         }
 
         var individual = await _mediator.SendAsync(new LoadIndividualQuery(id));
-        var vm = _mapper.Map<IndividualVm>(individual);
 
-        return vm;
+        return new IndividualVm
+        {
+            BirthDate = individual.BirthDate,
+            FirstName = individual.FirstName,
+            LastName = individual.LastName,
+            IndividualId = individual.IndividualId,
+            Length = individual.Length
+        };
     }
 
     public async Task SaveAsync(IndividualVm individual)
     {
-        var ind = _mapper.Map<IndividualToUpsert>(individual);
+        var ind = new IndividualToUpsert
+        {
+            BirthDate = individual.BirthDate,
+            FirstName = individual.FirstName,
+            LastName = individual.LastName,
+            IndividualId = individual.IndividualId,
+            Length = individual.Length
+        };
+
         await _mediator.SendAsync(new UpsertIndividualCommand(ind));
     }
 }

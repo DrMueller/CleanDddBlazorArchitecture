@@ -11,7 +11,5 @@ public class RegistryCollection : ServiceRegistry
             scanner.AssemblyContainingType<RegistryCollection>();
             scanner.WithDefaultConventions();
         });
-
-        this.AddAutoMapper(typeof(RegistryCollection));
     }
 }

@@ -22,7 +22,8 @@ namespace Mmu.CleanBlazor.DataAccess.Migrations
                 schema: "Individuals",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Gender = table.Column<int>(type: "int", nullable: false),
@@ -41,7 +42,8 @@ namespace Mmu.CleanBlazor.DataAccess.Migrations
                 schema: "Individuals",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedDate = table.Column<DateTime>(type: "datetime2", nullable: false)
@@ -56,7 +58,8 @@ namespace Mmu.CleanBlazor.DataAccess.Migrations
                 schema: "Infrastructure",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Error = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true),
                     EventId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EventOccurredOn = table.Column<DateTime>(type: "datetime2", nullable: false),

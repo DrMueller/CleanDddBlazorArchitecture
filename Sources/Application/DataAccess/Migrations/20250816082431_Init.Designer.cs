@@ -12,7 +12,7 @@ using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implementati
 namespace Mmu.CleanBlazor.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250816081210_Init")]
+    [Migration("20250816082431_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Mmu.CleanBlazor.DataAccess.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.11")
+                .HasAnnotation("ProductVersion", "9.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

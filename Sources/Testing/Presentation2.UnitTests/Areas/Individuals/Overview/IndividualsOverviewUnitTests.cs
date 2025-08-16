@@ -1,8 +1,9 @@
-using AutoMapper;
 using Bunit;
 using FluentAssertions;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.DependencyInjection;
+using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview;
+using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview.Response;
 using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Services;
 using Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview;
 using Moq;
@@ -13,18 +14,15 @@ namespace Mmu.CleanBlazor.Presentation2.UnitTests.Areas.Individuals.Overview
     public class IndividualsOverviewUnitTests : TestContext
     {
         private readonly Mock<IMediationService> _mediatorMock;
-        private readonly Mock<IMapper> _mapperMock;
         private readonly Mock<NavigationManager> _navManagerMock;
 
         private readonly IRenderedComponent<IndividualsOverview> _sut;
 
         public IndividualsOverviewUnitTests()
         {
-            _mapperMock = new Mock<IMapper>();
             _mediatorMock = new Mock<IMediationService>();
             _navManagerMock = new Mock<NavigationManager>();
 
-            Services.AddSingleton(_mapperMock.Object);
             Services.AddSingleton(_mediatorMock.Object);
             Services.AddSingleton(_navManagerMock.Object);
         }
@@ -34,8 +32,9 @@ namespace Mmu.CleanBlazor.Presentation2.UnitTests.Areas.Individuals.Overview
         {
             // Arrange
             var entries = CreateEntries();
-            _mapperMock.Setup(f => f.Map<List<IndividualOverviewEntryVm>>(It.IsAny<object>()))
-                .Returns(entries);
+            _mediatorMock
+                .Setup(f => f.SendAsync(It.IsAny<LoadAllIndividualsQuery>()))
+                .ReturnsAsync(entries);
 
             var sut = RenderComponent<IndividualsOverview>();
 
@@ -48,8 +47,9 @@ namespace Mmu.CleanBlazor.Presentation2.UnitTests.Areas.Individuals.Overview
         {
             // Arrange
             var entries = CreateEntries();
-            _mapperMock.Setup(f => f.Map<List<IndividualOverviewEntryVm>>(It.IsAny<object>()))
-                .Returns(entries);
+            _mediatorMock
+                .Setup(f => f.SendAsync(It.IsAny<LoadAllIndividualsQuery>()))
+                .ReturnsAsync(entries);
 
             var sut = RenderComponent<IndividualsOverview>();
 
@@ -61,9 +61,9 @@ namespace Mmu.CleanBlazor.Presentation2.UnitTests.Areas.Individuals.Overview
             tableRows.Count().Should().Be(entries.Count);
         }
 
-        private static List<IndividualOverviewEntryVm> CreateEntries()
+        private static List<IndividualOverviewEntry> CreateEntries()
         {
-            return new List<IndividualOverviewEntryVm>
+            return new List<IndividualOverviewEntry>
             {
                 new()
                 {

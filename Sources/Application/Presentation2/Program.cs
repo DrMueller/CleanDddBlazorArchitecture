@@ -15,12 +15,11 @@ namespace Mmu.CleanBlazor.Presentation2
 
             builder.Host.UseLamar(serviceRegistry =>
             {
-                serviceRegistry.Scan(
-                    scanner =>
-                    {
-                        scanner.AssembliesFromApplicationBaseDirectory();
-                        scanner.LookForRegistries();
-                    });
+                serviceRegistry.Scan(scanner =>
+                {
+                    scanner.AssembliesFromApplicationBaseDirectory();
+                    scanner.LookForRegistries();
+                });
             });
 
             builder.Services.AddHostedService<OutboxHostedService>();
@@ -33,7 +32,7 @@ namespace Mmu.CleanBlazor.Presentation2
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-     
+
                 app.UseHsts();
             }
 

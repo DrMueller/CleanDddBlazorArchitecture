@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.DeleteIndividual;
 using Mmu.CleanBlazor.Application.Areas.Individuals.UseCases.LoadOverview;
 using Mmu.CleanBlazor.Application.Infrastructure.Mediation.Services;
@@ -13,9 +12,6 @@ namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview
         private string InfoMessage { get; set; }
 
         [Inject]
-        public IMapper Mapper { get; set; }
-
-        [Inject]
         public IMediationService Mediator { get; set; }
 
         [Inject]
@@ -26,7 +22,7 @@ namespace Mmu.CleanBlazor.Presentation2.Areas.Individuals.Overview
         protected override async Task OnInitializedAsync()
         {
             var data = await Mediator.SendAsync(new LoadAllIndividualsQuery());
-            OverviewEntries = Mapper.Map<List<IndividualOverviewEntryVm>>(data);
+            OverviewEntries = data.Select(IndividualOverviewEntryVm.MapFromEntry).ToList();
         }
 
         private async Task DeleteIndividual(long individualId)
