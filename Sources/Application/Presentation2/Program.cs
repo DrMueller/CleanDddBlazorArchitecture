@@ -1,6 +1,7 @@
 using Lamar.Microsoft.DependencyInjection;
 using Mmu.CleanBlazor.Common.Settings.Config.Services;
 using Mmu.CleanBlazor.Common.Settings.Provisioning.Models;
+using Mmu.CleanBlazor.Presentation2.Infrastructure.Outbox;
 
 namespace Mmu.CleanBlazor.Presentation2
 {
@@ -22,6 +23,7 @@ namespace Mmu.CleanBlazor.Presentation2
                     });
             });
 
+            builder.Services.AddHostedService<OutboxHostedService>();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
 

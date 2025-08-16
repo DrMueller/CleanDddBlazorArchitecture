@@ -9,10 +9,10 @@ public abstract class EntityConfigBase<T> : IEntityTypeConfiguration<T>
 {
     public void Configure(EntityTypeBuilder<T> builder)
     {
-        builder.HasKey(f => f.Id);
-        builder.Property(f => f.Id)
-            .IsRequired()
-            .ValueGeneratedOnAdd();
+        builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .ValueGeneratedOnAdd()
+            .UseIdentityColumn();
 
         builder.Property(f => f.UpdatedDate).IsRequired();
         builder.Property(f => f.CreatedDate).IsRequired();

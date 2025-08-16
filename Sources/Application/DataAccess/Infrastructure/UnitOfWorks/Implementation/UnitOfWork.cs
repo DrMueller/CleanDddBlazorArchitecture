@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts;
+using Mmu.CleanBlazor.DataAccess.Infrastructure.Outboxes.Services;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.Services;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.UnitOfWorks.Servants;
 using Mmu.CleanBlazor.Domain.Areas.Common.Models;
@@ -12,15 +13,18 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.UnitOfWorks.Implementation
     public sealed class UnitOfWork : IUnitOfWork
     {
         private readonly IDomainEventDispatcher _domainEventDispatcher;
+        private readonly IOutboxMessageWriter _outboxMessageWriter;
         private readonly IRepositoryCache _repoCache;
         private IAppDbContext _dbContext = null!;
 
         public UnitOfWork(
             IRepositoryCache repoCache,
-            IDomainEventDispatcher domainEventDispatcher)
+            IDomainEventDispatcher domainEventDispatcher,
+            IOutboxMessageWriter outboxMessageWriter)
         {
             _repoCache = repoCache;
             _domainEventDispatcher = domainEventDispatcher;
+            _outboxMessageWriter = outboxMessageWriter;
         }
 
         public void Dispose()
@@ -40,6 +44,7 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.UnitOfWorks.Implementation
 
         public async Task SaveAsync()
         {
+            await _outboxMessageWriter.AddMessagesAsync(_dbContext); // Before technical fields to have them as well
             SetTechnicalFields();
             await _dbContext.SaveChangesAsync();
             await _domainEventDispatcher.DispatchEventsAsync(_dbContext);

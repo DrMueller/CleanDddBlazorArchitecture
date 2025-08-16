@@ -18,6 +18,7 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implemen
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.UseIdentityColumns();
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
         }
 

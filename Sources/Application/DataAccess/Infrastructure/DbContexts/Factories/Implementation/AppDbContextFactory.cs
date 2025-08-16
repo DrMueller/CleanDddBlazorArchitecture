@@ -13,9 +13,8 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories.Impleme
             IDbContextOptionsFactory optionsFactory,
             IAppSettingsProvider appSettingsProvider)
         {
-            _lazyOptions = new Lazy<DbContextOptions>(
-                () => optionsFactory.CreateForSqlServer(
-                    appSettingsProvider.Settings.ConnectionString));
+            _lazyOptions = new Lazy<DbContextOptions>(() => optionsFactory.CreateForSqlServer(
+                appSettingsProvider.Settings.ConnectionString));
         }
 
         public IAppDbContext Create()

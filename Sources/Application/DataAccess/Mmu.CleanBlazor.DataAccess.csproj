@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UserSecretsId>643bb425-2179-4e00-aac5-8f48967382a5</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -23,7 +24,12 @@
 	</ItemGroup>
 	
   <ItemGroup>
+    <ProjectReference Include="..\Application\Mmu.CleanBlazor.Application.csproj" />
     <ProjectReference Include="..\Domain\Mmu.CleanBlazor.Domain.csproj" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
