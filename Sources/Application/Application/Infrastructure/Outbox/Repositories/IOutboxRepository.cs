@@ -6,8 +6,6 @@ namespace Mmu.CleanBlazor.Application.Infrastructure.Outbox.Repositories
 {
     public interface IOutboxRepository : IRepository
     {
-        Task InsertAsync(OutboxMessage message);
-
         Task<IReadOnlyCollection<OutboxMessage>> LoadUnsentMessagesAsync();
     }
 }
