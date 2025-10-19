@@ -1,0 +1,7 @@
+﻿<select @bind:get="ValueString" @bind:set="SetValueStringAsync" class="form-select">
+    <option value="null">-</option>
+    <option value="true">Yes</option>
+    <option value="false">No</option>
+</select>
+
+<ClearFilterButton OnClearRequested="() => SetValueStringAsync(NullValue)" />

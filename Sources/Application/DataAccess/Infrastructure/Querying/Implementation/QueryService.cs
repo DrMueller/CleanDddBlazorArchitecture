@@ -23,6 +23,11 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.Querying.Implementation
             return await PrepareQuery(spec).AnyAsync();
         }
 
+        public Task<int> CountAsync<TResult>(IQuerySpecification<TResult> spec)
+        {
+            return PrepareQuery(spec).CountAsync();
+        }
+
         public async Task<IReadOnlyCollection<TResult>> QueryAsync<TResult>(IQuerySpecification<TResult> spec)
         {
             var qry = PrepareQuery(spec);

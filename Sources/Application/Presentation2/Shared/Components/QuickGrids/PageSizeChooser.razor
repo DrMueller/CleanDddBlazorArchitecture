@@ -1,0 +1,15 @@
+﻿
+<div class="page-size-chooser-container">
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <label>ItemsPerPage</label>
+            <select class="form-select" @bind:get="@ItemsPerPage" @bind:set="HandleValueChangedAsync">
+                <option>5</option>
+                <option>10</option>
+                <option>20</option>
+                <option>50</option>
+                <option>100</option>
+            </select>
+        </div>
+    </div>
+</div>

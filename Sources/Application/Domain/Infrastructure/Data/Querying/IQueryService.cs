@@ -6,6 +6,7 @@ namespace Mmu.CleanBlazor.Domain.Infrastructure.Data.Querying
     {
         Task<IReadOnlyCollection<TResult>> QueryAsync<TResult>(IQuerySpecification<TResult> spec);
         Task<bool> AnyAsync<TResult>(IQuerySpecification<TResult> spec);
+        Task<int> CountAsync<TResult>(IQuerySpecification<TResult> spec);
         Task<TResult> QuerySingleAsync<TResult>(IQuerySpecification<TResult> spec);
         Task<TResult?> QuerySingleOrDefaultAsync<TResult>(IQuerySpecification<TResult> spec);
     }

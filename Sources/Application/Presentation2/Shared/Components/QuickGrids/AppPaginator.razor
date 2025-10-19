@@ -1,0 +1,21 @@
+﻿@inherits Microsoft.AspNetCore.Components.QuickGrid.Paginator
+
+<div class="paginator">
+    @if (State.TotalItemCount.HasValue)
+    {
+        <div class="summary">
+            <text>
+                <strong>@State.TotalItemCount</strong> Items
+            </text>
+        </div>
+        <nav role="navigation">
+            <button class="go-first" type="button" @onclick="GoFirstAsync" disabled="@(!CanGoBack)" title="GoToFirstPage" aria-label="GoToFirstPage"></button>
+            <button class="go-previous" type="button" @onclick="GoPreviousAsync" disabled="@(!CanGoBack)" title="GoToPreviousPage" aria-label="GoToPreviousPage"></button>
+            <div class="pagination-text">
+                Page <strong>@(State.CurrentPageIndex + 1)</strong> / <strong>@(State.LastPageIndex + 1)</strong>
+            </div>
+            <button class="go-next" type="button" @onclick="GoNextAsync" disabled="@(!CanGoForwards)" title="GoToNextPage" aria-label="GoToNextPage"></button>
+            <button class="go-last" type="button" @onclick="GoLastAsync" disabled="@(!CanGoForwards)" title="GoToLastPage" aria-label="GoToLastPage"></button>
+        </nav>
+    }
+</div>

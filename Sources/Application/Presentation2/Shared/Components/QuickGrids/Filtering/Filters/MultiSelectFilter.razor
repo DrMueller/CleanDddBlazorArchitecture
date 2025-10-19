@@ -1,0 +1,16 @@
+﻿
+<EditForm Model="new object()">
+    <MultiSelection
+        TValue="int"
+        TItem="ItemWithIdAndNameViewModel"
+        Options="DistinctItems"
+        Disabled="false"
+        IdSelector="g => g.Id"
+        TextSelector="g => g.Name"
+        Value="SelectedIds"
+        ValueExpression="() => SelectedIds"
+        ValueChanged="HandleValueChangedAsync">
+    </MultiSelection>
+
+    <ClearFilterButton OnClearRequested="ClearAsync"/>
+</EditForm>

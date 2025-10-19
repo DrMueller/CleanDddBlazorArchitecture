@@ -1,0 +1,41 @@
+﻿@typeparam TItem
+@typeparam TValue where TValue : notnull
+
+@inherits InputBase<List<TValue>>
+
+<div class="multi-select-container">
+    <div class="form-select cursor-pointer dropdown-trigger" @onclick="ToggleDropdown">
+        @if (SelectedLabels.Any())
+        {
+            foreach (var label in SelectedLabels)
+            {
+                <h5 class="d-inline-block me-1"><span class="badge bg-primary">@label</span></h5>
+            }
+        }
+        else
+        {
+            <div>Please Choose</div>
+        }
+    </div>
+
+    @if (_dropdownVisible)
+    {
+        <div class="dropdown-panel @CssClass" id="@ElementId" data-testid="@DataTestId" disabled="@Disabled">
+            @foreach (var option in Options)
+            {
+                var value = IdSelector(option);
+                var isSelected = SelectedValues.Contains(value);
+                <div class="form-check">
+                    <InputCheckbox
+                        id="@value"
+                        class="form-check-input"
+                        Value="@isSelected"
+                        ValueExpression="() => isSelected"
+                        ValueChanged="() => ToggleSelectionAsync(value)">
+                    </InputCheckbox>
+                    <label class="form-check-label" for="@value">@TextSelector(option)</label>
+                </div>
+            }
+        </div>
+    }
+</div>

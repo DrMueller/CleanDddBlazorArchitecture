@@ -25,6 +25,7 @@ namespace Mmu.CleanBlazor.Presentation2
             builder.Services.AddHostedService<OutboxHostedService>();
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
+            builder.Services.AddBlazorBootstrap();
 
             var app = builder.Build();
 

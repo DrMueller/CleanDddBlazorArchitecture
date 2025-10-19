@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using JetBrains.Annotations;
-using Mmu.CleanBlazor.Common.LanguageExtensions.Invariance.Servants;
 
 namespace Mmu.CleanBlazor.Common.LanguageExtensions.Invariance
 {
@@ -77,7 +76,7 @@ namespace Mmu.CleanBlazor.Common.LanguageExtensions.Invariance
 
         private static void ThrowException<T>(string exceptionMessageShell, Expression<Func<T>> propertyExpression)
         {
-            var propertyName = ExpressionServant.GetPropertyName(propertyExpression);
+            var propertyName = ExpressionExtensions.GetPropertyName(propertyExpression);
             var exceptionMessage = string.Format(exceptionMessageShell, propertyName);
             ThrowException(exceptionMessage);
         }

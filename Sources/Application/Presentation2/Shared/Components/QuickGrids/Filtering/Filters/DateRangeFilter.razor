@@ -1,0 +1,17 @@
+﻿<div class="d-flex flex-column align-items-start gap-2">
+    <div>
+        <label for="from" class="form-label">DateFrom</label>
+        <div id="from">
+            <InputDate Value="From" OnChange="HandleFromChangedAsync"/>
+        </div>
+    </div>
+
+    <div>
+        <label for="to" class="form-label">UntilCapital</label>
+        <div id="to">
+            <InputDate Value="To" OnChange="HandleToChangedAsync" />
+        </div>
+    </div>
+
+    <ClearFilterButton OnClearRequested="ClearAsync"/>
+</div>
