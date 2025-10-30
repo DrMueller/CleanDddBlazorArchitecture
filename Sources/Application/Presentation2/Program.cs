@@ -11,7 +11,10 @@ namespace Mmu.CleanBlazor.Presentation2
         {
             var builder = WebApplication.CreateBuilder(args);
             var config = ConfigurationFactory.Create();
-            builder.Services.Configure<AppSettings>(config.GetSection(AppSettings.SectionKey));
+            builder.Services.AddOptions<AppSettings>()
+                .Bind(config.GetSection(AppSettings.SectionKey))
+                .ValidateDataAnnotations()
+                .ValidateOnStart();
 
             builder.Host.UseLamar(serviceRegistry =>
             {
