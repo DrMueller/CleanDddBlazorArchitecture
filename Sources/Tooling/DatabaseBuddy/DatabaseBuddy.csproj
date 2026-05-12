@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <UserSecretsId>178eb1a9-6a77-427f-ae6b-5f7174cbb043</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Docker.DotNet" Version="3.125.15" />
+    <PackageReference Include="Spectre.Console" Version="0.55.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Application\DataAccess\Mmu.CleanBlazor.DataAccess.csproj" />
+    <ProjectReference Include="..\..\Application\Presentation2\Mmu.CleanBlazor.Presentation2.csproj" />
+    <ProjectReference Include="..\..\Testing\Testing.Common\Mmu.CleanBlazor.Presentation2.Testing.Common.csproj" />
+  </ItemGroup>
+
+</Project>

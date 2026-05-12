@@ -1,0 +1,2 @@
+﻿- Eigene Data Seeder Factories
+- Einfachres Docker Handling

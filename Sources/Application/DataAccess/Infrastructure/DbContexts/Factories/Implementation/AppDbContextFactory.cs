@@ -11,10 +11,10 @@ namespace Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories.Impleme
 
         public AppDbContextFactory(
             IDbContextOptionsFactory optionsFactory,
-            IAppSettingsProvider appSettingsProvider)
+            IConnectionStringProvider connectionstringProvider)
         {
             _lazyOptions = new Lazy<DbContextOptions>(() => optionsFactory.CreateForSqlServer(
-                appSettingsProvider.Settings.ConnectionString));
+                connectionstringProvider.ConnectionString));
         }
 
         public IAppDbContext Create()

@@ -1,5 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Lamar;
+using Mmu.CleanBlazor.Common.Settings.Provisioning.Services;
+using Mmu.CleanBlazor.Common.Settings.Provisioning.Services.Implementation;
 
 namespace Mmu.CleanBlazor.Common
 {
@@ -14,6 +16,8 @@ namespace Mmu.CleanBlazor.Common
                     scanner.AssemblyContainingType<RegistryCollection>();
                     scanner.WithDefaultConventions();
                 });
+
+            For<IConnectionStringProvider>().Use<AppSettingsProvider>().Singleton();
         }
     }
 }
