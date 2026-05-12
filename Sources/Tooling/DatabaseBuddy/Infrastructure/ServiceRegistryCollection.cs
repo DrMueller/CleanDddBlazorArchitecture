@@ -9,12 +9,10 @@ using DatabaseBuddy.Infrastructure.ConsoleStuff.ExceptionHandling.Services;
 using DatabaseBuddy.Infrastructure.ConsoleStuff.ExceptionHandling.Services.Implementation;
 using DatabaseBuddy.Infrastructure.ConsoleStuff.ExecutionContext.Services;
 using DatabaseBuddy.Infrastructure.ConsoleStuff.ExecutionContext.Services.Implementation;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.Implementation;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.NativeProxies;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.NativeProxies.Implementation;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.Servants;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.Servants.Implementation;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services.Implementation;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services.NativeProxies;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services.NativeProxies.Implementation;
 using DatabaseBuddy.Infrastructure.Settings;
 using Lamar;
 using Mmu.CleanBlazor.Common.Settings.Provisioning.Services;
@@ -53,15 +51,8 @@ namespace DatabaseBuddy.Infrastructure
 
         private void RegisterDockerStuff()
         {
-            For<IDockerApiAdapter>().Use<DockerApiAdapter>().Scoped();
-            For<IDockerClientFactory>().Use<DockerClientFactory>().Scoped();
-            For<IDockerContainerRepository>().Use<DockerContainerRepository>().Scoped();
-
-            For<IContainerFactory>().Use<ContainerFactory>().Scoped();
-            For<IContainerStarter>().Use<ContainerStarter>().Scoped();
-
-            For<IContainerRemover>().Use<ContainerRemover>().Scoped();
-            For<IContainerProvisioner>().Use<ContainerProvisioner>().Scoped();
+            For<IContainerManager>().Use<ContainerManager>().Scoped();
+            For<IDockerClientFactory>().Use<DockerClientFactory>().Singleton();
         }
     }
 }

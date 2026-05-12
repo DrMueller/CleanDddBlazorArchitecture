@@ -8,10 +8,17 @@
     <UserSecretsId>178eb1a9-6a77-427f-ae6b-5f7174cbb043</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Infrastructure\DockerStuff\Containers\**" />
+    <EmbeddedResource Remove="Infrastructure\DockerStuff\Containers\**" />
+    <None Remove="Infrastructure\DockerStuff\Containers\**" />
+  </ItemGroup>
+
 
   <ItemGroup>
-    <PackageReference Include="Docker.DotNet" Version="3.125.15" />
     <PackageReference Include="Spectre.Console" Version="0.55.2" />
+    <PackageReference Include="Testcontainers" Version="4.11.0" />
+    <PackageReference Include="Testcontainers.MsSql" Version="4.11.0" />
   </ItemGroup>
 
   <ItemGroup>

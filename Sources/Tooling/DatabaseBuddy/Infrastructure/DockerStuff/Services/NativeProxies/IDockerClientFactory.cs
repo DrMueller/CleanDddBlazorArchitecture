@@ -1,6 +1,6 @@
 ﻿using Docker.DotNet;
 
-namespace DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services.NativeProxies
+namespace DatabaseBuddy.Infrastructure.DockerStuff.Services.NativeProxies
 {
     internal interface IDockerClientFactory
     {

@@ -1,12 +1,12 @@
 ﻿using DatabaseBuddy.DataSeedings;
 using DatabaseBuddy.Infrastructure.ConsoleStuff.Commands.Models;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services;
 
 namespace DatabaseBuddy.ConsoleCommands.AddBaseData
 {
-    public class AddBaseDataCommand(
+    public class AddBaseDataConsoleCommand(
         IBaseDataDbSeeder baseDataDbSeeder,
-        IContainerProvisioner containerProvisioner)
+        IContainerManager containerManager)
         : IConsoleCommand
     {
         public string Description => "Add base data";
@@ -14,7 +14,7 @@ namespace DatabaseBuddy.ConsoleCommands.AddBaseData
 
         public async Task ExecuteAsync()
         {
-            await containerProvisioner.AssureStartedAsync();
+            await containerManager.AssureStartedAsync();
 
             await baseDataDbSeeder.SeedAsync();
         }

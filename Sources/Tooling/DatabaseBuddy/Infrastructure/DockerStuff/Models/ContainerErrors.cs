@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using Mmu.CleanBlazor.Common.LanguageExtensions.Invariance;
 
-namespace DatabaseBuddy.Infrastructure.DockerStuff.Containers.Models
+namespace DatabaseBuddy.Infrastructure.DockerStuff.Models
 {
     [PublicAPI]
     public class ContainerErrors

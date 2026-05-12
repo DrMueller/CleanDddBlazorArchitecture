@@ -1,6 +1,6 @@
 ﻿using Mmu.CleanBlazor.Common.LanguageExtensions.Invariance;
 
-namespace DatabaseBuddy.Infrastructure.DockerStuff.Containers.Models
+namespace DatabaseBuddy.Infrastructure.DockerStuff.Models
 {
     public class RunningContainer
     {

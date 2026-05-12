@@ -1,16 +1,13 @@
-﻿using DatabaseBuddy.Infrastructure;
-using DatabaseBuddy.Infrastructure.ConsoleStuff.Commands.Models;
-using DatabaseBuddy.Infrastructure.DockerStuff.Containers.Services;
-
+﻿using DatabaseBuddy.Infrastructure.ConsoleStuff.Commands.Models;
+using DatabaseBuddy.Infrastructure.DockerStuff.Services;
 using Microsoft.EntityFrameworkCore;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Contexts.Implementation;
 using Mmu.CleanBlazor.DataAccess.Infrastructure.DbContexts.Factories;
 
 namespace DatabaseBuddy.ConsoleCommands.InitalizeDatabase
 {
-    public class InitalizeDatabaseCommand(
-        IContainerProvisioner containerProvisioner,
-        IContainerRemover containerRemover,
+    public class InitalizeDatabaseConsoleCommand(
+        IContainerManager containerManager,
         IAppDbContextFactory dbContextFactory)
         : IConsoleCommand
     {
@@ -19,8 +16,8 @@ namespace DatabaseBuddy.ConsoleCommands.InitalizeDatabase
 
         public async Task ExecuteAsync()
         {
-            await containerRemover.RemoveAsync(Constants.ContainerName);
-            await containerProvisioner.AssureStartedAsync();
+            await containerManager.RemoveAsync();
+            await containerManager.AssureStartedAsync();
 
             var dbContext = dbContextFactory.Create();
             var dbContextApp = (AppDbContext)dbContext;
